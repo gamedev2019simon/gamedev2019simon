@@ -1,0 +1,41 @@
+<h3 align=center> t3a03-buttons-simon.html </h3>
+
+<input type=button value="My Status" onclick="{
+   alert('foo I am bored')
+}"> <br>
+
+<input type=text id="myText01" value="Stuff"> <br> <br>
+<textarea id="myArea01" rows=4 cols=70> Does this do something? </textarea> <br>
+
+<input type=button value="Fancy Stuff" onclick="{
+   document.all.myArea01.value = document.all.myText01.value
+}"> <br>
+
+<input type=button value="Variables" onclick="{
+   myArray = new Array
+   myX = 3.14
+   myWord = 'Save'
+   myArray[5] = 'me'
+   document.all.myArea01.value = myX+'*'+myX+'='+myX * myX //+myWord+ myArray[5]
+}"> <br>
+<input type=text id="myText02" value=5> <br>
+<input type=button value="Other Variables" onclick="{
+  myX = document.all.myText02.value
+  document.all.myArea01.value = myX + '*' + myX + '=' + myX * myX
+}">
+
+<input type=button value="Looop" onclick="{
+  for (myLoop = 3; myLoop >0; myLoop--){
+    alert('Wait ' + myLoop + ' times')
+  }
+}">
+
+<input type=button value="IF" onclick="{
+  myX2 = 3
+  if (myX2 == 3) {
+    document.all.myArea01.value = 'Yes, myX2 does equal 3. It is ' + myX2
+  } 
+  else {
+    document.all.myArea01.value = 'No, myX2 was '+myX2
+  }
+}">
