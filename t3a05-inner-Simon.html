@@ -1,0 +1,65 @@
+<h1 align=left> InnerHTML Test </h1>
+<script> 
+function my1(){
+ document.getElementById("Output1").innerHTML += "<font color=blue>"+ document.all.Input1.value+ "</font>"
+}
+function my2(){
+ document.getElementById("Output1").innerHTML = " "
+}
+function my3(){
+ document.getElementById("Output2").innerHTML = "<br> <input type=button value=\'Quotes\' onclick=\'{my21()}\'> <br>"+
+ "<input type=button value=\'other tags\' onclick=\'{my22()}\'> <br>"+
+ "<input type=button value=\'CSS\' onclick=\'{my23()}\'> <br>"+
+ "<input type=button value=\'Image\' onclick=\'{my24()}\'> <br>"+
+ "<input type=button value=\'Table\' onclick=\'{my25()}\'> <br>"+
+ "<input type=button value=\'I/O\' onclick=\'{my26()}\'> <br>"+
+ "<input type=button value=\'7\' onclick=\'{my27()}\'> <br>"+
+ "<input type=button value=\'8\' onclick=\'{my28()}\'> <br>"
+}
+function my4(){
+  document.all.Output1.innerHTML = "Cool <font style=\" color:blue; background-color:green;"+ 
+  "\"> british colour </font> cool"
+}
+function my21(){
+ 
+}
+function my22(){
+
+}
+function my23(){
+
+}
+function my24(){
+
+}
+function my25(){
+
+}
+function my26(){
+
+}
+function my27(){
+
+}
+function my28(){
+
+}
+</script>
+<a href="https://www.w3schools.com/jsref/prop_html_innerhtml.asp">Link to the best help page about InnerHTML in Javascript</a> <br> <br>
+<input type=text id="Input1" value="Got it!"> <br>
+<div id="Output1"> </div>
+<input type=button value="InnerHTMLOutput" onclick="{
+ my1()
+}">
+<input type=button value="Reset" onclick="{
+ my2()
+}"> 
+<input type=button value="CSS" onclick="{
+ my4()
+}"> <br>
+<input type=button value="Here is what you wanted..." onclick="{
+ my3()
+}">
+
+<div id="Output2"> </div>
+<div id="Output3"> </div>
