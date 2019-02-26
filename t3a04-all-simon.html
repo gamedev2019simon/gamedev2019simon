@@ -7,11 +7,10 @@ function my1(){
 function my2(){
  document.all.myArea1.value = document.all.myText1.value
 }
-function myLoop1(y){
+function myLoop1(){
  document.all.myArea1.value = ' '
- for (x = y-1; x >0; x--){
-  document.all.myArea1.value += x + '*'
-  y=y*x
+ for (x = 3; x >0; x--){
+  document.all.myArea1.value += x 
  }
  document.all.myArea1.value += '= ' + y
 }
@@ -55,8 +54,8 @@ function myObjectFun1() {
 <input type=button value="Prove I/O" onclick="{
  my2()
 }"> <br>
-<input type=button value="Not Factorial" onclick="{
- myLoop1(5)
+<input type=button value="Loop" onclick="{
+ myLoop1()
 }">
 <input type=button value="nine?" onclick="{
  myIf1()
@@ -66,9 +65,6 @@ function myObjectFun1() {
 }">
 <input type=button value="Click This!" onmouseover="{
  document.all.myArea1.value= 'you did not click'
-}"
-onclick="{
- alert("This should not happen")
 }">
 
 <a href="https://www.w3schools.com/tags/ref_eventattributes.asp"> events site </a>
