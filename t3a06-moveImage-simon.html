@@ -1,0 +1,21 @@
+<h3 align="right"> Move Image by Simon </h3>
+
+<img src="myImg.png" height="200" id="myImg01" style="position:relative; left:0px; top:0px;">
+<br>
+<input type=button value="Right" onClick="{
+ myFun01()
+}" onkeydown="{myFun01()}">
+<input type=text value=0 onMouseOver="{
+ this.value = 'x = ' + document.getElementById('myImg01').style.left}">
+
+<table>
+<tr> <td> </td><td> Up </td><td> </td>
+<tr> <td> Left </td><td> Go </td><td> Right </td>
+<tr> <td> </td><td> Down </td><td> </td>
+
+<script>
+function myFun01() {
+ document.getElementById("myImg01").style.left =
+ parseInt(document.getElementById("myImg01").style.left) + 10 + "px"
+}
+</script>
