@@ -13,8 +13,7 @@ function my3(){
  "<input type=button value=\'Image\' onclick=\'{my24()}\'> <br>"+
  "<input type=button value=\'Table\' onclick=\'{my25()}\'> <br>"+
  "<input type=button value=\'I/O\' onclick=\'{my26()}\'> <br>"+
- "<input type=button value=\'7\' onclick=\'{my27()}\'> <br>"+
- "<input type=button value=\'8\' onclick=\'{my28()}\'> <br>"
+ "<input type=button value=\'Canvas\' onclick=\'{my27()}\'> <br>"
 }
 function my4(){
   document.all.Output1.innerHTML = "Cool <font style=\" color:blue; background-color:green;"+ 
@@ -39,14 +38,17 @@ function my25(){
 }
 function my26(){
  document.getElementById("Output3").innerHTML = "<input type=\"text\" id=\"Input2\" value=\"Input\"> <br>"+
- "<textarea id=\"Output4\" rows\"4\" cols\"20\"> Output </textarea>"+
- "<input type=\"button\" value=\"Click Here\" onclick=\"{ document.getElementById( 'Output4').innerHTML = document.getElementById('Input2').innerHTML + 'Test'}\">"
+ "<div id=\"Output4\"> Output </div>"+
+ "<input type=\"button\" value=\"Click Here\" onclick=\"{ document.getElementById( 'Output4').innerHTML = document.getElementById( 'Input2').value}\">"
 }
 function my27(){
- document.getElementById("Output2").innerHTML =""
+ document.getElementById("Output2").innerHTML ="<canvas id='myCanvas01' width='200' height='100' style='border:1px dotted;'></canvas>"
+ document.getElementById("Output3").innerHTML ="<input type=button value='Draw a rectangle' onclick='{my28()}'> <br>"
 }
 function my28(){
- document.getElementById("Output2").innerHTML =""
+ var canvas = document.getElementById("myCanvas01").getContext("2d")
+ canvas.fillStyle = "00FF00";
+ canvas.fillRect(0, 0, 20, 20);
 }
 </script>
 <a href="https://www.w3schools.com/jsref/prop_html_innerhtml.asp">Link to the best help page about InnerHTML in Javascript</a> <br> <br>
