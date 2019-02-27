@@ -1,21 +1,62 @@
 <h3 align="right"> Move Image by Simon </h3>
 
-<img src="myImg.png" height="200" id="myImg01" style="position:relative; left:0px; top:0px;">
+<img src="myImg.png" height="200" id="myImg01" style="position:relative; left:0px; top:0px;z-index:-1;">
 <br>
 <input type=button value="Right" onClick="{
  myFun01()
 }" onkeydown="{myFun01()}">
-<input type=text value=0 onMouseOver="{
+<input type=text value=0 id="Test" onMouseOver="{
  this.value = 'x = ' + document.getElementById('myImg01').style.left}">
 
 <table>
-<tr> <td> </td><td> Up </td><td> </td>
-<tr> <td> Left </td><td> Go </td><td> Right </td>
-<tr> <td> </td><td> Down </td><td> </td>
+<tr> <td><img src="ArrowUpLeft.png" height="200" onclick="{DiagonalUL()}"> </img> </td><td> <img src="ArrowUp.png" height="200" onclick="{Up()}"> </img> </td><td><img src="ArrowUpRight.png" width="200" onclick="{DiagonalUR()}"> </img> </td> </tr>
+<tr> <td><img src="ArrowLeft.png" width="200" onclick="{Left()}"> </img></td><td> Go </td><td><img src="ArrowRight.png" width="200" onclick="{Right()}"> </img> </td> </tr>
+<tr> <td><img src="ArrowDownLeft.png" width="200" onclick="{DiagonalDL()}"> </img> </td><td> <img src="ArrowDown.png" height="200" onclick="{Down()}"> </img> </td><td> <img src="ArrowDownRight.png" height="200" onclick="{DiagonalDR()}"> </img> </td> </tr>
+</table>
 
 <script>
 function myFun01() {
  document.getElementById("myImg01").style.left =
  parseInt(document.getElementById("myImg01").style.left) + 10 + "px"
 }
+
+function Up() {
+ document.getElementById("myImg01").style.top =
+ parseInt(document.getElementById("myImg01").style.top) + -10 + "px"
+}
+function Down() {
+ document.getElementById("myImg01").style.top =
+ parseInt(document.getElementById("myImg01").style.top) + 10 + "px"
+}
+function Left() {
+ document.getElementById("myImg01").style.left =
+ parseInt(document.getElementById("myImg01").style.left) + -10 + "px"
+}
+function Right() {
+ document.getElementById("myImg01").style.left =
+ parseInt(document.getElementById("myImg01").style.left) + 10 + "px"
+}
+function DiagonalDR() {
+ Right()
+ Down()
+}
+function DiagonalUR() {
+ Right()
+ Up()
+}
+function DiagonalDL() {
+ Left()
+ Down()
+}
+function DiagonalUL() {
+ Left()
+ Up()
+}
+document.addEventListener("keydown", function keyCheck(event) {
+ if(event.keyCode == 68) {Right()}
+ if(event.keyCode == 65) {Left()}
+ if(event.keyCode == 87) {Up()}
+ if(event.keyCode == 83) {Down()}
+ document.all.Test.value=event.keyCode
+})
 </script>
