@@ -1,1 +1,36 @@
+<html>
+<head>
 
+</head>
+<body onkeydown="{keyDownFun(event)}">
+<h3 align="middle"> WASD by Simon </h3>
+<img src="myImg.png" height="200" id="myImg01" style="position:relative; left:0px; top:0px;z-index:-1;">
+
+<script>
+function keyDownFun(event){
+ if(event.key == "d") {Right()}
+ else if(event.key == "w") {Up()}
+ else if(event.key == "a") {Left()}
+ else {Down()}
+ alert(Test)
+}
+function Up() {
+ document.getElementById("myImg01").style.top =
+ parseInt(document.getElementById("myImg01").style.top) + -10 + "px"
+}
+function Down() {
+ document.getElementById("myImg01").style.top =
+ parseInt(document.getElementById("myImg01").style.top) + 10 + "px"
+}
+function Left() {
+ document.getElementById("myImg01").style.left =
+ parseInt(document.getElementById("myImg01").style.left) + -10 + "px"
+}
+function Right() {
+ document.getElementById("myImg01").style.left =
+ parseInt(document.getElementById("myImg01").style.left) + 10 + "px"
+}
+</script>
+
+</body>
+</html>
