@@ -5,30 +5,57 @@
 <body onkeydown="{keyDownFun(event)}">
 <h3 align="middle"> WASD by Simon </h3>
 <img src="myImg.png" height="200" id="myImg01" style="position:relative; left:0px; top:0px;z-index:-1;">
-
+<img src="diffIMG.png" height="200" id="myImg02" style="position:relative; left:100px; top:0px;z-index:-1;">
+<br>event.key <input id="Info01"> 
+<br>event.which <input id="Info02"> <br>
 <script>
 function keyDownFun(event){
- if(event.key == "d") {Right()}
- else if(event.key == "w") {Up()}
- else if(event.key == "a") {Left()}
- else if(event.key == "s") {Down()}
- alert(Test)
+ if(event.key == "d") {Right1()}
+ else if(event.key == "w") {Up1()}
+ else if(event.key == "a") {Left1()}
+ else if(event.key == "s") {Down1()}
+
+ if(event.which == 39) {Right2()}
+ else if(event.which == 38) {Up2()}
+ else if(event.which == 37) {Left2()}
+ else if(event.which == 40) {Down2()}
+
+ document.all.Info01.value = event.key
+ document.all.Info02.value = event.which
 }
-function Up() {
+// Move the image
+function Up1() {
  document.getElementById("myImg01").style.top =
  parseInt(document.getElementById("myImg01").style.top) + -10 + "px"
 }
-function Down() {
+function Down1() {
  document.getElementById("myImg01").style.top =
  parseInt(document.getElementById("myImg01").style.top) + 10 + "px"
 }
-function Left() {
+function Left1() {
  document.getElementById("myImg01").style.left =
  parseInt(document.getElementById("myImg01").style.left) + -10 + "px"
 }
-function Right() {
+function Right1() {
  document.getElementById("myImg01").style.left =
  parseInt(document.getElementById("myImg01").style.left) + 10 + "px"
+}
+//Move the other image
+function Up2() {
+ document.getElementById("myImg02").style.top =
+ parseInt(document.getElementById("myImg02").style.top) + -10 + "px"
+}
+function Down2() {
+ document.getElementById("myImg02").style.top =
+ parseInt(document.getElementById("myImg02").style.top) + 10 + "px"
+}
+function Left2() {
+ document.getElementById("myImg02").style.left =
+ parseInt(document.getElementById("myImg02").style.left) + -10 + "px"
+}
+function Right2() {
+ document.getElementById("myImg02").style.left =
+ parseInt(document.getElementById("myImg02").style.left) + 10 + "px"
 }
 </script>
 
