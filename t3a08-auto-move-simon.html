@@ -1,0 +1,15 @@
+<h3> Automatic Movement </h3>
+
+<script>
+
+function myFun01 () {
+ document.getElementById("myImg02").style.left =
+ parseInt(document.getElementById("myImg02").style.left) + 10 + "px"
+}
+
+</script>
+
+<img src="diffIMG.png" height="200" id="myImg02" style="position:relative; left:100px; top:0px;z-index:-1;">
+
+<input type=button value="right" onclick="{myFun01()}">
+<input type=button value="auto" onclick="{alert()}">
