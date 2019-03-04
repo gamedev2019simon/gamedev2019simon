@@ -1,15 +1,67 @@
 <h3> Automatic Movement </h3>
 
 <script>
+myLooping = 0
 
-function myFun01 () {
+function Right () {
  document.getElementById("myImg02").style.left =
  parseInt(document.getElementById("myImg02").style.left) + 10 + "px"
+}
+function Left () {
+ document.getElementById("myImg02").style.left =
+ parseInt(document.getElementById("myImg02").style.left) + -10 + "px"
+}
+function Up () {
+ document.getElementById("myImg02").style.top =
+ parseInt(document.getElementById("myImg02").style.top) + -10 + "px"
+}
+function Down () {
+ document.getElementById("myImg02").style.top =
+ parseInt(document.getElementById("myImg02").style.top) + 10 + "px"
+}
+
+function autoRight () {
+ clearInterval(myLooping)
+ myLooping = setInterval(function() {
+  Right()
+  if(parseInt(document.getElementById("myImg02").style.left) > 1600){
+   document.getElementById("myImg02").style.left = "-400px"
+  }
+ }, 20)
+}
+function autoLeft () {
+ clearInterval(myLooping)
+ myLooping = setInterval(function() {
+  Left()
+  if(parseInt(document.getElementById("myImg02").style.left) < -400){
+   document.getElementById("myImg02").style.left = "1600px"
+  }
+ }, 20)
+}
+function autoUp () {
+ clearInterval(myLooping)
+ myLooping = setInterval(function() {
+  Up()
+  if(parseInt(document.getElementById("myImg02").style.top) < -300){
+   document.getElementById("myImg02").style.top = "700px"
+  }
+ }, 20)
+}
+function autoDown () {
+ clearInterval(myLooping)
+ myLooping = setInterval(function() {
+  Down()
+  if(parseInt(document.getElementById("myImg02").style.top) > 700){
+   document.getElementById("myImg02").style.top = "-300px"
+  }
+ }, 20)
 }
 
 </script>
 
 <img src="diffIMG.png" height="200" id="myImg02" style="position:relative; left:100px; top:0px;z-index:-1;">
 
-<input type=button value="right" onclick="{myFun01()}">
-<input type=button value="auto" onclick="{alert()}">
+//<input type=button value="right" onclick="{Right()}"> <br>
+<table> <tr> <td> </td> <td> <input type=button value="auto Up" onclick="{autoUp()}"> </td> </tr>
+<tr> <td> <input type=button value="auto Left" onclick="{autoLeft()}"> </td> <td> </td> <td> <input type=button value="auto Right" onclick="{autoRight()}"> </td> </tr>
+<tr> <td> </td> <td> <input type=button value="auto Down" onclick="{autoDown()}"> </td>
