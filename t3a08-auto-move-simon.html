@@ -3,6 +3,8 @@
 <script>
 myLoopingX = 0
 myLoopingY = 0
+xMovement = 0
+yMovement = 0
 
 function Right () {
  document.getElementById("myImg02").style.left =
@@ -22,46 +24,76 @@ function Down () {
 }
 
 function autoRight () {
- clearInterval(myLoopingX)
- myLoopingX = setInterval(function() {
-  Right()
-  if(parseInt(document.getElementById("myImg02").style.left) > 1600){
-   document.getElementById("myImg02").style.left = "-400px"
-  }
- }, 20)
+ if(xMovement == 0) {
+  xMovement = 1
+  clearInterval(myLoopingX)
+  myLoopingX = setInterval(function() {
+   Right()
+   if(parseInt(document.getElementById("myImg02").style.left) > 1600){
+    document.getElementById("myImg02").style.left = "-400px"
+   }
+  }, 20)
+ } 
+ else if(xMovement == -1) {
+  xMovement = 0
+  clearInterval(myLoopingX)
+ }
 }
 function autoLeft () {
- clearInterval(myLoopingX)
- myLoopingX = setInterval(function() {
-  Left()
-  if(parseInt(document.getElementById("myImg02").style.left) < -400){
-   document.getElementById("myImg02").style.left = "1600px"
-  }
- }, 20)
+ if(xMovement == 0) {
+  xMovement = -1
+  clearInterval(myLoopingX)
+  myLoopingX = setInterval(function() {
+   Left()
+   if(parseInt(document.getElementById("myImg02").style.left) < -400){
+    document.getElementById("myImg02").style.left = "1600px"
+   }
+  }, 20)
+ }
+ else if(xMovement == 1) {
+  xMovement = 0
+  clearInterval(myLoopingX)
+ }
 }
 function autoUp () {
- clearInterval(myLoopingY)
- myLoopingY = setInterval(function() {
-  Up()
-  if(parseInt(document.getElementById("myImg02").style.top) < -300){
-   document.getElementById("myImg02").style.top = "700px"
-  }
- }, 20)
+ if(yMovement == 0) {
+  yMovement = -1
+  clearInterval(myLoopingY)
+  myLoopingY = setInterval(function() {
+   Up()
+   if(parseInt(document.getElementById("myImg02").style.top) < -300){
+    document.getElementById("myImg02").style.top = "700px"
+   }
+  }, 20)
+ }
+ else if(yMovement == 1) {
+  yMovement = 0
+  clearInterval(myLoopingY)
+ }
 }
 function autoDown () {
- clearInterval(myLoopingY)
- myLoopingY = setInterval(function() {
-  Down()
-  if(parseInt(document.getElementById("myImg02").style.top) > 700){
-   document.getElementById("myImg02").style.top = "-300px"
-  }
- }, 20)
+ if(yMovement == 0) {
+  yMovement = 1
+  clearInterval(myLoopingY)
+  myLoopingY = setInterval(function() {
+   Down()
+   if(parseInt(document.getElementById("myImg02").style.top) > 700){
+    document.getElementById("myImg02").style.top = "-300px"
+   }
+  }, 20)
+ }
+ else if(yMovement == -1) {
+  yMovement = 0
+  clearInterval(myLoopingY)
+ }
 }
 function stop () {
  clearInterval(myLoopingX)
  clearInterval(myLoopingY)
  myLoopingX = 0
  myLoopingY = 0
+ xMovement = 0
+ yMovement = 0
 }
 
 </script>
@@ -72,3 +104,9 @@ function stop () {
 <table> <tr> <td> </td> <td> <input type=button value="auto Up" onclick="{autoUp()}"> </td> </tr>
 <tr> <td> <input type=button value="auto Left" onclick="{autoLeft()}"> </td> <td> <input type=button value="STOP" onclick="{stop()}"</td> <td> <input type=button value="auto Right" onclick="{autoRight()}"> </td> </tr>
 <tr> <td> </td> <td> <input type=button value="auto Down" onclick="{autoDown()}"> </td>
+
+
+Pressing auto Left when the picture is moving Right, it will stop it first, then on the second click it will go Left. <br>
+Pressing auto Right when the picture is moving Left, it will stop it first, then on the second click it will go Right. <br>
+Pressing auto Up when the picture is moving Down, it will stop it first, then on the second click it will go Up. <br>
+Pressing auto Down when the picture is moving Up, it will stop it first, then on the second click it will go Down. <br>
