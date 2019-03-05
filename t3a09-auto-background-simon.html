@@ -1,0 +1,26 @@
+<body id="myBody" style="background-repeat:repeat; background-size: 50%" background="modernArt.png">
+
+<script>
+ let myGlobalX = 0
+ let myClock
+
+ function backgroundLeft() {
+  myTemp = "100px 0px"
+  myGlobalX -= 5
+  myTemp = myGlobalX+ "px 0px"
+  document.getElementById("myBody").style.backgroundPosition = myTemp
+ }
+ function autoBackgroundLeft() {
+  clearInterval(myClock)
+  myClock = setInterval(backgroundLeft, 100)
+ }
+ function imgRight() {
+  document.getElementById("myImg01"). style.left = parseInt(document.getElementById("myImg01").style.left) + 10 + "px"
+ }
+</script>
+
+<input type="button" id="button01" value="Make the background move!" onclick="{backgroundLeft()}">
+<input type="button" value="Make the background move automatically!" onclick="{autoBackgroundLeft()}"> 
+<input type="button" value="Move the image to the right" onclick="{imgRight()}"> <br> <br>
+<img id="myImg01" style="position:relative; width:100px; height:80px; top:0px; left:0px;" src="ArrowRight.png">
+
