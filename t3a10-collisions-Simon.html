@@ -1,6 +1,6 @@
 <body bgcolor="yellow" onMouseMove="{
  document.getElementById('mouseLocation').innerHTML = 'x='+ event.x+ ' y=' + event.y
-}">
+}" onkeydown="{keyDetect(event)}">
 
 <script>
  function myHitOther(my1,my2){
@@ -18,21 +18,64 @@
        (top1    <=  bottom2) ){
        return 1
    }
-  document.getElementById("debug").innerHTML = "l1" + left1 + "r1" + right1 + "t1" + top1 + "b1" + bottom1 + "l2" + left2 + "r2" + right2 + "t2" + top2 + "b2" + bottom2
+  //document.getElementById("debug").innerHTML = "l1" + left1 + "r1" + right1 + "t1" + top1 + "b1" + bottom1 + "l2" + left2 + "r2" + right2 + "t2" + top2 + "b2" + bottom2
+ }
+ function checkAll() {
+  if( myHitOther("myImg01", "myImg02") == true) {
+   document.getElementById("hit").innerHTML = "HIT"
+   return true
+  }
+  else {
+   document.getElementById("hit").innerHTML = "NO HIT"
+   return false
+  }
  }
  function Right1() {
-  document.getElementById("myImg01").style.left = parseInt(document.getElementById("myImg01").style.left) + 10 + "px"
-  if( myHitOther("myImg01", "myImg02") == true) {
-   alert("true")
+  document.getElementById("myImg01").style.left = parseInt(document.getElementById("myImg01").style.left) + 10 + "px" 
+  checkAll()
+  if(checkAll() == true) {
+   document.getElementById("myImg02").style.left = parseInt(document.getElementById("myImg02").style.left) + 20 + "px"
   }
+
+ }
+ function Left1() { 
+  document.getElementById("myImg01").style.left = parseInt(document.getElementById("myImg01").style.left) - 10 + "px"
+  checkAll()
+  if(checkAll() == true) {
+   document.getElementById("myImg02").style.left = parseInt(document.getElementById("myImg02").style.left) - 20 + "px"
+  }
+
+ }
+ function Up1() { 
+  document.getElementById("myImg01").style.top = parseInt(document.getElementById("myImg01").style.top) - 10 + "px"
+  checkAll()
+  if(checkAll() == true) {
+   document.getElementById("myImg02").style.top = parseInt(document.getElementById("myImg02").style.top) - 20 + "px"
+  }
+
+ }
+ function Down1() {
+  document.getElementById("myImg01").style.top = parseInt(document.getElementById("myImg01").style.top) + 10 + "px"
+  checkAll()
+  if(checkAll() == true) {
+   document.getElementById("myImg02").style.top = parseInt(document.getElementById("myImg02").style.top) + 20 + "px"
+  }
+ 
+ }
+ function keyDetect(event){
+  if(event.key == "d") {Right1()}
+  else if(event.key == "w") {Up1()}
+  else if(event.key == "a") {Left1()}
+  else if(event.key == "s") {Down1()}
  }
 
 </script>
 <img src="myImg.png"  id="myImg01" style="position:absolute; left:300px; top:0px; width:400; height:200;">
-<img src="diffIMG.png" id="myImg02" style="position:absolute; left:900px; top:0px; width:400; height:200;">
+<img src="diffIMG.png" id="myImg02" style="position:absolute; left:600px; top:300px; width:400; height:200;">
 <br> <br><input type=button value="Right" onclick="{Right1()}">
 <div id="debug"> </div>
 <div id="mouseLocation"> beep </div>
+<div id="hit"> Use WASD to move the image </div>
 
 
 
