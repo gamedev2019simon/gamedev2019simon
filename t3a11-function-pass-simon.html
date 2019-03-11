@@ -1,0 +1,21 @@
+<script>
+x=0
+myNumber=0
+function mySquare(x) {
+ myNumber=x*x
+ document.getElementById('myDiv01').innerHTML = myNumber
+}
+</script>
+<input type="button" value="1 squared" onclick="{mySquare(1)}"> <br>
+<input type="button" value="2 squared" onclick="{mySquare(2) }"> <br>
+<input type="button" value="3 squared" onclick="{mySquare(3) }"> <br>
+<input type="button" value="4 squared" onclick="{mySquare(4) }"> <br>
+<input type="button" value="5 squared" onclick="{mySquare(5) }"> <br>
+<input type="button" value="6 squared" onclick="{mySquare(6) }"> <br>
+<input type="button" value="7 squared" onclick="{mySquare(7) }"> <br>
+<input type="button" value="8 squared" onclick="{mySquare(8) }"> <br> <br>
+
+<input type="number" id="myInput01" value="1">
+<input type="button" value="X squared" onclick="{mySquare(document.getElementById('myInput01').value)}">
+
+<div id="myDiv01">
