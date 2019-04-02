@@ -1,0 +1,3 @@
+https://stackoverflow.com/questions/5203407/how-to-detect-if-multiple-keys-are-pressed-at-once-using-javascript
+
+This is a link to a forum post, where I found a solution to detecting multiple key presses simultaneously
