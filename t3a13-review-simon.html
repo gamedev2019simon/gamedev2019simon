@@ -17,7 +17,7 @@
  function myBasics() {
   x = document.getElementById("myText01").value
   document.getElementById("myDiv02").innerHTML = x+"*"+x+"="+ x * x
-  if(x==3) {
+  if(x==5) {
    document.getElementById("myDiv02").innerHTML += " You did not change the number!"
   }
  }
@@ -42,10 +42,10 @@
  }
 </script>
 
-<input type="button" value="9 main parts of programming" onclick="{myList01()}"> </input>
+<input type="button" value="The Courses" onclick="{myList01()}"> </input>
 <div id="myDiv01"> </div>
 <input type="button" value="Basics" onclick="{myBasics()}"> </input> <br>
 <input type="button" value="Middle" onclick="{myMiddle01()}"> </input> <br>
-<input type="button" value="Last 3 without classes" onmouseover="{myEnd()}"> </input> <br>
-Change this number: <input type="text" value="3" id="myText01"> </input> <br>
+<input type="button" value="Advanced Stuff" onmouseover="{myEnd()}"> </input> <br>
+Change this number (or don't...): <input type="text" value="5" id="myText01"> </input> <br>
 Output: <div id="myDiv02"> </div>
