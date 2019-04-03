@@ -1,0 +1,202 @@
+
+<h1 align=center> Calculator by Simon </h1>
+
+<script>
+var number1 = "0"
+var operation = ""
+var number2 = ""
+
+function my1() {
+ if(document.getElementById("myScreen").innerHTML != 0) {
+  document.getElementById("myScreen").innerHTML += 1
+ }
+ else {
+  document.getElementById("myScreen").innerHTML = 1
+ }
+ if(operation == "") {
+  number1 = number1 +"1"
+ }
+ else {
+  number2 = number2 +"1"
+ }
+}
+function my2() {
+ if(document.getElementById("myScreen").innerHTML != 0) {
+  document.getElementById("myScreen").innerHTML += 2
+ }
+ else {
+  document.getElementById("myScreen").innerHTML = 2
+ }
+ if(operation == "") {
+  number1 = number1 +"2"
+ }
+ else {
+  number2 = number2 +"2"
+ }
+}
+function my3() {
+ if(document.getElementById("myScreen").innerHTML != 0) {
+  document.getElementById("myScreen").innerHTML += 3
+ } 
+ else {
+  document.getElementById("myScreen").innerHTML = 3
+ }
+ if(operation == "") {
+  number1 = number1 +"3"
+ }
+ else {
+  number2 = number2 +"3"
+ }
+}function my4() {
+ if(document.getElementById("myScreen").innerHTML != 0) {
+  document.getElementById("myScreen").innerHTML += 4
+ }
+ else {
+  document.getElementById("myScreen").innerHTML = 4
+ }
+ if(operation == "") {
+  number1 = number1 +"4"
+ }
+ else {
+  number2 = number2 +"4"
+ }
+}function my5() {
+ if(document.getElementById("myScreen").innerHTML != 0) {
+  document.getElementById("myScreen").innerHTML += 5
+ }
+ else {
+  document.getElementById("myScreen").innerHTML = 5
+ }
+ if(operation == "") {
+  number1 = number1 +"5"
+ }
+ else {
+  number2 = number2 +"5"
+ }
+}function my6() {
+ if(document.getElementById("myScreen").innerHTML != 0) {
+  document.getElementById("myScreen").innerHTML += 6
+ }
+ else {
+  document.getElementById("myScreen").innerHTML = 6
+ }
+ if(operation == "") {
+  number1 = number1 +"6"
+ }
+ else {
+  number2 = number2 +"6"
+ }
+}function my7() {
+ if(document.getElementById("myScreen").innerHTML != 0) {
+  document.getElementById("myScreen").innerHTML += 7
+ }
+ else {
+  document.getElementById("myScreen").innerHTML = 7
+ }
+ if(operation == "") {
+  number1 = number1 +"7"
+ }
+ else {
+  number2 = number2 +"7"
+ }
+}function my8() {
+ if(document.getElementById("myScreen").innerHTML != 0) {
+  document.getElementById("myScreen").innerHTML += 8
+ }
+ else {
+  document.getElementById("myScreen").innerHTML = 8
+ }
+ if(operation == "") {
+  number1 = number1 +"8"
+ }
+ else {
+  number2 = number2 +"8"
+ }
+}function my9() {
+ if(document.getElementById("myScreen").innerHTML != 0) {
+  document.getElementById("myScreen").innerHTML += 9
+ }
+ else {
+  document.getElementById("myScreen").innerHTML = 9
+ }
+ if(operation == "") {
+  number1 = number1 +"9"
+ }
+ else {
+  number2 = number2 +"9"
+ }
+}function my0() {
+ if(document.getElementById("myScreen").innerHTML != 0) {
+  document.getElementById("myScreen").innerHTML += 0
+ }
+ if(operation == "") {
+  number1 = number1 +"0"
+ }
+ else {
+  number2 = number2 +"0"
+ }
+}
+
+function myMulti() {
+ if(operation == "") {
+  operation = "*"
+  document.getElementById("myScreen").innerHTML += " * "
+ }
+}
+function myDivi() {
+ if(operation == "") {
+  operation = "/"
+  document.getElementById("myScreen").innerHTML += " / "
+ }
+}
+function myPlus() {
+ if(operation == "") {
+  operation = "+"
+  document.getElementById("myScreen").innerHTML += " + "
+ }
+}
+function myMinus() {
+ if(operation == "") {
+  operation = "-"
+  document.getElementById("myScreen").innerHTML += " - "
+ }
+}
+function myEquals() {
+ if(number2 != "" && operation != "") {
+  if(operation == "*") {
+   document.getElementById("myScreen").innerHTML += " = " + number1 * number2 +"<br>"
+  }
+  if(operation == "/") {
+   document.getElementById("myScreen").innerHTML += " = " + number1 / number2 +"<br>"
+  }
+  if(operation == "+") {
+   x = parseInt(number1) + parseInt(number2)
+   document.getElementById("myScreen").innerHTML += " = " + x +"<br>"
+  }
+  if(operation == "-") {
+   document.getElementById("myScreen").innerHTML += " = " + number1 - number2 +"<br>"
+  }
+  operation = ""
+  number1 = "0"
+  number2 = ""
+ }
+}
+function reset() {
+ operation = ""
+ number1 = "0"
+ number2 = ""
+ document.getElementById("myScreen").innerHTML = 0
+}
+
+</script>
+
+
+<table border=1 style="padding:2px;font-size:400%;" id="Table1">
+<tr><td colspan="4"><div id="myScreen">0</div></td></tr>
+<tr> <td onclick="my7()"> 7 </td> <td onclick="my8()"> 8 </td> <td onclick="my9()"> 9 </td> <td onclick="myMulti()"> * </td></tr>
+<tr> <td onclick="my4()"> 4 </td> <td onclick="my5()"> 5 </td> <td onclick="my6()"> 6 </td> <td onclick="myDivi()"> / </td></tr>
+<tr> <td onclick="my1()"> 1 </td> <td onclick="my2()"> 2 </td> <td onclick="my3()"> 3 </td> <td onclick="myPlus()"> + </td></tr>
+<tr> <td onclick="my0()"> 0 </td> <td onclick="reset()"> C </td> <td onclick="myEquals()"> = </td> <td onclick="myMinus()"> - </td> </tr>
+
+
+</table>
