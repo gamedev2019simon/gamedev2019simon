@@ -2,12 +2,13 @@
 <h1 align=center> Calculator by Simon </h1>
 
 <script>
-var number1 = "0"
+var number1 = ""
 var operation = ""
 var number2 = ""
+var ans = 0
 
 function my1() {
- if(document.getElementById("myScreen").innerHTML != 0) {
+ if(document.getElementById("myScreen").innerHTML != " ") {
   document.getElementById("myScreen").innerHTML += 1
  }
  else {
@@ -21,7 +22,7 @@ function my1() {
  }
 }
 function my2() {
- if(document.getElementById("myScreen").innerHTML != 0) {
+ if(document.getElementById("myScreen").innerHTML != " ") {
   document.getElementById("myScreen").innerHTML += 2
  }
  else {
@@ -35,7 +36,7 @@ function my2() {
  }
 }
 function my3() {
- if(document.getElementById("myScreen").innerHTML != 0) {
+ if(document.getElementById("myScreen").innerHTML != " ") {
   document.getElementById("myScreen").innerHTML += 3
  } 
  else {
@@ -48,7 +49,7 @@ function my3() {
   number2 = number2 +"3"
  }
 }function my4() {
- if(document.getElementById("myScreen").innerHTML != 0) {
+ if(document.getElementById("myScreen").innerHTML != " ") {
   document.getElementById("myScreen").innerHTML += 4
  }
  else {
@@ -61,7 +62,7 @@ function my3() {
   number2 = number2 +"4"
  }
 }function my5() {
- if(document.getElementById("myScreen").innerHTML != 0) {
+ if(document.getElementById("myScreen").innerHTML != " ") {
   document.getElementById("myScreen").innerHTML += 5
  }
  else {
@@ -74,7 +75,7 @@ function my3() {
   number2 = number2 +"5"
  }
 }function my6() {
- if(document.getElementById("myScreen").innerHTML != 0) {
+ if(document.getElementById("myScreen").innerHTML != " ") {
   document.getElementById("myScreen").innerHTML += 6
  }
  else {
@@ -87,7 +88,7 @@ function my3() {
   number2 = number2 +"6"
  }
 }function my7() {
- if(document.getElementById("myScreen").innerHTML != 0) {
+ if(document.getElementById("myScreen").innerHTML != " ") {
   document.getElementById("myScreen").innerHTML += 7
  }
  else {
@@ -100,7 +101,7 @@ function my3() {
   number2 = number2 +"7"
  }
 }function my8() {
- if(document.getElementById("myScreen").innerHTML != 0) {
+ if(document.getElementById("myScreen").innerHTML != " ") {
   document.getElementById("myScreen").innerHTML += 8
  }
  else {
@@ -113,7 +114,7 @@ function my3() {
   number2 = number2 +"8"
  }
 }function my9() {
- if(document.getElementById("myScreen").innerHTML != 0) {
+ if(document.getElementById("myScreen").innerHTML != " ") {
   document.getElementById("myScreen").innerHTML += 9
  }
  else {
@@ -126,8 +127,11 @@ function my3() {
   number2 = number2 +"9"
  }
 }function my0() {
- if(document.getElementById("myScreen").innerHTML != 0) {
+ if(document.getElementById("myScreen").innerHTML != " ") {
   document.getElementById("myScreen").innerHTML += 0
+ }
+ else {
+  document.getElementById("myScreen").innerHTML = 0
  }
  if(operation == "") {
   number1 = number1 +"0"
@@ -165,38 +169,56 @@ function myEquals() {
  if(number2 != "" && operation != "") {
   if(operation == "*") {
    document.getElementById("myScreen").innerHTML += " = " + number1 * number2 +"<br>"
+   ans = number1 * number2
   }
   if(operation == "/") {
    document.getElementById("myScreen").innerHTML += " = " + number1 / number2 +"<br>"
+   ans = number1 / number2
   }
   if(operation == "+") {
    x = parseInt(number1) + parseInt(number2)
    document.getElementById("myScreen").innerHTML += " = " + x +"<br>"
+   ans = x
   }
   if(operation == "-") {
    document.getElementById("myScreen").innerHTML += " = " + number1 - number2 +"<br>"
+   ans = number1 - number2
   }
   operation = ""
-  number1 = "0"
+  number1 = ""
   number2 = ""
  }
 }
 function reset() {
  operation = ""
- number1 = "0"
+ number1 = ""
  number2 = ""
- document.getElementById("myScreen").innerHTML = 0
+ document.getElementById("myScreen").innerHTML = " "
+}
+function answer() {
+ if(document.getElementById("myScreen").innerHTML != " ") {
+  document.getElementById("myScreen").innerHTML += ans
+ }
+ else {
+  document.getElementById("myScreen").innerHTML = ans
+ }
+ if(operation == "") {
+  number1 = number1 + ans
+ }
+ else {
+  number2 = number2 + ans
+ }
 }
 
 </script>
 
 
 <table border=1 style="padding:2px;font-size:400%;" id="Table1">
-<tr><td colspan="4"><div id="myScreen">0</div></td></tr>
-<tr> <td onclick="my7()"> 7 </td> <td onclick="my8()"> 8 </td> <td onclick="my9()"> 9 </td> <td onclick="myMulti()"> * </td></tr>
-<tr> <td onclick="my4()"> 4 </td> <td onclick="my5()"> 5 </td> <td onclick="my6()"> 6 </td> <td onclick="myDivi()"> / </td></tr>
-<tr> <td onclick="my1()"> 1 </td> <td onclick="my2()"> 2 </td> <td onclick="my3()"> 3 </td> <td onclick="myPlus()"> + </td></tr>
-<tr> <td onclick="my0()"> 0 </td> <td onclick="reset()"> C </td> <td onclick="myEquals()"> = </td> <td onclick="myMinus()"> - </td> </tr>
+<tr><td colspan="5"><div id="myScreen"><p> </p></div></td></tr>
+<tr> <td onclick="my7()"> 7 </td> <td onclick="my8()"> 8 </td> <td onclick="my9()"> 9 </td> <td onclick="myMulti()"> * </td> <td onclick="myDivi()"> / </td></tr>
+<tr> <td onclick="my4()"> 4 </td> <td onclick="my5()"> 5 </td> <td onclick="my6()"> 6 </td> <td onclick="myPlus()"> + </td> <td onclick="myMinus()"> - </td></tr>
+<tr> <td onclick="my1()"> 1 </td> <td onclick="my2()"> 2 </td> <td onclick="my3()"> 3 </td> <td colspan=2 onclick="answer()"> Ans </td></tr>
+<tr> <td colspan=3 onclick="my0()"><center> 0 </center></td>  <td onclick="myEquals()"> = </td> <td onclick="reset()"> C </td> </tr>
 
 
 </table>
