@@ -1,0 +1,34 @@
+<h2 align=center> Javascript Classes Introduction by Simon </h2>
+<input type=text id="myNameInput" placeholder="Enter an animal name here" value="">
+
+<input id="myButton130" type="button" value="Make and Show the class myAnimal" onclick="{buttonFun01()}"><br> <br>
+<div id="myDiv130">...<div><br>
+<script src="https://code.responsivevoice.org/responsivevoice.js"> </script>
+
+<input type=button value="Use Responsive Voice" onclick="{buttonFun02()}"><br><br>
+
+<input type="button" value="initialize speak" onclick="{buttonFun03()}"><br> <br>
+
+
+<script> 
+
+function buttonFun01() {
+ class myAnimal {
+  constructor(passName, passAge) {
+   this.myName = passName;
+   this.myAge = passAge;
+  }
+  myShow(){
+   document.getElementById("myDiv130").innerHTML = "Hello "+ this.myName +". You are "+ this.myAge + " years old<br>"
+  }
+ }
+ myDog = new myAnimal(document.getElementById("myNameInput").value, 5)
+ myDog.myShow()
+}
+function buttonFun02() {
+ responsiveVoice.speak("Storm get to work")
+}
+function buttonFun03() {
+ responsiveVoice.speak("I wonder what this does lktgoiushftgh7ysr", "US English Female", {pitch: 1, rate: 1, volume: 1})
+}
+</script>
