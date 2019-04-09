@@ -2,23 +2,27 @@
 <head>
 
 </head>
-<body onkeydown="{keyDownFun(event)}">
+<body>
 <h3 align="middle"> WASD by Simon </h3>
 <img src="myImg.png" height="200" id="myImg01" style="position:relative; left:0px; top:0px;z-index:-1;">
 <img src="diffIMG.png" height="200" id="myImg02" style="position:relative; left:100px; top:0px;z-index:-1;">
 <br>event.key <input id="Info01"> 
 <br>event.which <input id="Info02"> <br>
 <script>
-function keyDownFun(event){
- if(event.key == "d") {Right1()}
- else if(event.key == "w") {Up1()}
- else if(event.key == "a") {Left1()}
- else if(event.key == "s") {Down1()}
+var map=new Array()
+onkeydown = onkeyup = function(e){
+ map[e.keyCode] = e.type == "keydown"
+}
+setInterval(function(){
+ if(map[68] == true) {Right1()}
+ if(map[87] == true) {Up1()}
+ if(map[65] == true) {Left1()}
+ if(map[83] == true) {Down1()}
 
- if(event.which == 39) {Right2()}
- else if(event.which == 38) {Up2()}
- else if(event.which == 37) {Left2()}
- else if(event.which == 40) {Down2()}
+ if(map[39] == true) {Right2()}
+ if(map[38] == true) {Up2()}
+ if(map[37] == true) {Left2()}
+ if(map[40] == true) {Down2()}
 
  document.all.Info01.value = event.key
  document.all.Info02.value = event.which
