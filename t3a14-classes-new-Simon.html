@@ -8,6 +8,7 @@
 <input type=button value="Use Responsive Voice" onclick="{buttonFun02()}"><br><br>
 
 <input type="button" value="initialize speak" onclick="{buttonFun03()}"><br> <br>
+<input type="button" value="german accent" onclick="{buttonFun04()}"><br> <br>
 
 
 <script> 
@@ -30,5 +31,9 @@ function buttonFun02() {
 }
 function buttonFun03() {
  responsiveVoice.speak("I wonder what this does lktgoiushftgh7ysr", "US English Female", {pitch: 1, rate: 1, volume: 1})
+}
+function buttonFun04() {
+
+ responsiveVoice.speak("This should be in a german accent", "Deutsch Female", {pitch: 1, rate: 1, volume: 1})
 }
 </script>
