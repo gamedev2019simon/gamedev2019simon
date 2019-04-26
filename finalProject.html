@@ -61,10 +61,10 @@ for(i=0; i<obstacleNumber; i++) {
   obstacle[3] = {id:"Mushroom004", onScreen:false, rot:0,}
   moveTo(obstacle[3].id, 2800, Math.random()*570+50)
   obstacleNumber = 4
- }
-
+}
+}
  
- }
+
  if(HeliBroken==false){move("SkyBox", -7, 0)}
  if(HeliBroken==false){move("SkyBox2", -7, 0)}
  if(parseInt(document.getElementById("SkyBox").style.left) < -1600) {moveTo("SkyBox", 1600, 0)}
@@ -75,7 +75,7 @@ for(i=0; i<obstacleNumber; i++) {
   document.getElementById("Helicopter").style.transform="rotate("+rotation+"deg)"
  }
  
-}
+
 if(score == 50) {window.location.href = "http://pixelartmaker.com/art/611f68f47de1265.png"}
 document.getElementById("scoreScreen").innerHTML = score
 },10)
