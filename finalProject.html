@@ -10,7 +10,7 @@
 <img src="MushroomT.png" style="position:absolute; height:48; width:48; left:-300; top:500;transform:rotate(0deg);" id="Mushroom004">
 
 <div id="resetScreen" style="position:absolute; left:660; top:-1300" align=center onclick="reset()"> <font size="20"> You crashed! <br> Reset? </font> </div>
-
+<div id="instructions" style="position:absolute; left:600; top:300" onclick="move('instructions',1000,1000)"> <font size="5">Press the spacebar to make the helicopter go up <br> Release the spacebar to make the helicopter fall <br> Do not hit the flying mushromms! <br> Hitting the sky will make you bounce <br> Reach a score of 50 to win <br> Click this message to hide it</font></div>
 <div id="scoreScreen" style="position:absolute; left:10; top:60; z-index:1;"> 0 </div>
 <style> //disable scroll bars (copied from the internet)
  body {width:100%; height:100%; overflow:hidden; margin:0; }
@@ -30,6 +30,7 @@ obstacleNumber = 1
 onkeydown = onkeyup = function(e){
  map[e.keyCode] = e.type == "keydown"
 }
+
 start()
 function start(){
 gameLoop = setInterval(function looop(){
