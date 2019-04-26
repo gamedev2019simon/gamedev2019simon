@@ -1,0 +1,110 @@
+<body style="background-color: #00bfff;">
+
+<img src="HelicopterT.png" style="position:absolute; height:81; width:135; left:0; top:200;transform:rotate(20deg);" id="Helicopter">
+<img src="dot.png" style="position:absolute; height:1000; width:1600; left:0; top:700;" id="Floor">
+<img src="sky.png" style="position:absolute; height:50; width:1600; left:0; top:0;" id="SkyBox">
+<img src="sky.png" style="position:absolute; height:50; width:1600; left:1600; top:0;" id="SkyBox2">
+<img src="MushroomT.png" style="position:absolute; height:48; width:48; left:-300; top:500;transform:rotate(0deg);" id="Mushroom001">
+<img src="MushroomT.png" style="position:absolute; height:48; width:48; left:-300; top:500;transform:rotate(0deg);" id="Mushroom002">
+<img src="MushroomT.png" style="position:absolute; height:48; width:48; left:-300; top:500;transform:rotate(0deg);" id="Mushroom003">
+<img src="MushroomT.png" style="position:absolute; height:48; width:48; left:-300; top:500;transform:rotate(0deg);" id="Mushroom004">
+<div id="scoreScreen" style="position:absolute; left:10; top:60; z-index:1;"> 0 </div>
+<style> //disable scroll bars (copied from the internet)
+ body {width:100%; height:100%; overflow:hidden; margin:0; }
+ html {width:100%; height:100%; overflow:hidden; }
+</style> <!-- end of disabling scroll bars --!>
+<script> 
+var map=new Array()
+var gameLoop = 0
+var HeliBroken = false
+var velocity = 0
+var score = 0
+var rotation = 0
+var obstacle = new Array()
+obstacle[0] = {id:"Mushroom001", onScreen:false, rot:0,}
+
+onkeydown = onkeyup = function(e){
+ map[e.keyCode] = e.type == "keydown"
+}
+gameLoop = setInterval(function(){
+if(map[32] == true&&HeliBroken == false){if(velocity < 12){velocity = velocity - (0.2+0.002*score)}}
+else{velocity = velocity + (0.15+0.002*score)}
+move("Helicopter", 5*HeliBroken, velocity)
+if(collisions("Floor", "Helicopter")) {if(HeliBroken == false){velocity = -8} else{clearInterval(gameLoop)}}
+if(collisions("SkyBox", "Helicopter")||collisions("SkyBox2", "Helicopter")) {if(HeliBroken == false){velocity = 8}}
+
+for(i=0; i<obstacle.length; i++) {
+ move(obstacle[i].id, -14/(1+HeliBroken), 0)
+ obstacle[i].rot = obstacle[i].rot + 20
+ document.getElementById(obstacle[i].id).style.transform="rotate("+obstacle[i].rot+"deg)"
+ if(parseInt(document.getElementById(obstacle[i].id).style.left) < -100) {
+  moveTo(obstacle[i].id, 1600, 50+(Math.random()*570))
+  obstacle[i].v = Math.random()*-2
+  score++
+ }
+ if(collisions("Helicopter", obstacle[i].id)) {crash()}
+ if(score == 10) {
+  obstacle[1] = {id:"Mushroom002", onScreen:false, rot:0,}
+  moveTo(obstacle[1].id, 2400, Math.random()*570+50)
+ }
+ if(score == 30) {
+  obstacle[2] = {id:"Mushroom003", onScreen:false, rot:0,}
+  moveTo(obstacle[2].id, 2000, Math.random()*570+50)
+  obstacle[3] = {id:"Mushroom004", onScreen:false, rot:0,}
+  moveTo(obstacle[3].id, 2800, Math.random()*570+50)
+ }
+
+ 
+ }
+ if(HeliBroken==false){move("SkyBox", -7, 0)}
+ if(HeliBroken==false){move("SkyBox2", -7, 0)}
+ if(parseInt(document.getElementById("SkyBox").style.left) < -1600) {moveTo("SkyBox", 1600, 0)}
+ if(parseInt(document.getElementById("SkyBox2").style.left) < -1600) {moveTo("SkyBox2", 1600, 0)}
+
+ if(HeliBroken==true){
+  rotation = rotation + 10
+  document.getElementById("Helicopter").style.transform="rotate("+rotation+"deg)"
+ if(score == 50) {window.location.href = "http://pixelartmaker.com/art/611f68f47de1265.png"}
+}
+
+document.getElementById("scoreScreen").innerHTML = score
+}, 10)
+
+
+ 
+
+function crash() {
+ HeliBroken = true
+ document.body.style.backgroundColor = "red"
+ 
+}
+
+function move(myObj, myOX, myOY) {
+ document.getElementById(myObj).style.left = parseInt(document.getElementById(myObj).style.left) + myOX
+ document.getElementById(myObj).style.top = parseInt(document.getElementById(myObj).style.top) + myOY 
+}
+
+function moveTo(myObj, myOX, myOY) {
+ document.getElementById(myObj).style.left = myOX
+ document.getElementById(myObj).style.top = myOY 
+}
+
+function collisions(my1,my2){
+  left1   = parseInt(document.getElementById(my1).style.left)
+  right1  = left1 + parseInt(document.getElementById(my1).style.width)
+  top1    = parseInt(document.getElementById(my1).style.top)   
+  bottom1 = top1   + parseInt(document.getElementById(my1).style.height)
+  left2   = parseInt(document.getElementById(my2).style.left)
+  right2  = left2 + parseInt(document.getElementById(my2).style.width)
+  top2    = parseInt(document.getElementById(my2).style.top)   
+  bottom2 = top2   + parseInt(document.getElementById(my2).style.height)
+  if ((right1  >=  left2  ) &&      	   
+       (bottom1 >=  top2   ) &&
+       (left1   <=  right2 ) &&
+       (top1    <=  bottom2) ){
+       return 1
+   }
+ }
+</script>
+
+</body>
