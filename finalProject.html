@@ -73,9 +73,10 @@ for(i=0; i<obstacleNumber; i++) {
  if(HeliBroken==true){
   rotation = rotation + 10
   document.getElementById("Helicopter").style.transform="rotate("+rotation+"deg)"
- if(score == 50) {window.location.href = "http://pixelartmaker.com/art/611f68f47de1265.png"}
+ }
+ 
 }
-
+if(score == 50) {window.location.href = "http://pixelartmaker.com/art/611f68f47de1265.png"}
 document.getElementById("scoreScreen").innerHTML = score
 },10)
 }
