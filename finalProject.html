@@ -8,6 +8,9 @@
 <img src="MushroomT.png" style="position:absolute; height:48; width:48; left:-300; top:500;transform:rotate(0deg);" id="Mushroom002">
 <img src="MushroomT.png" style="position:absolute; height:48; width:48; left:-300; top:500;transform:rotate(0deg);" id="Mushroom003">
 <img src="MushroomT.png" style="position:absolute; height:48; width:48; left:-300; top:500;transform:rotate(0deg);" id="Mushroom004">
+
+<div id="resetScreen" style="position:absolute; left:660; top:-1300" align=center onclick="reset()"> <font size="20"> You crashed! <br> Reset? </font> </div>
+
 <div id="scoreScreen" style="position:absolute; left:10; top:60; z-index:1;"> 0 </div>
 <style> //disable scroll bars (copied from the internet)
  body {width:100%; height:100%; overflow:hidden; margin:0; }
@@ -22,18 +25,21 @@ var score = 0
 var rotation = 0
 var obstacle = new Array()
 obstacle[0] = {id:"Mushroom001", onScreen:false, rot:0,}
+obstacleNumber = 1
 
 onkeydown = onkeyup = function(e){
  map[e.keyCode] = e.type == "keydown"
 }
-gameLoop = setInterval(function(){
+start()
+function start(){
+gameLoop = setInterval(function looop(){
 if(map[32] == true&&HeliBroken == false){if(velocity < 12){velocity = velocity - (0.2+0.002*score)}}
 else{velocity = velocity + (0.15+0.002*score)}
 move("Helicopter", 5*HeliBroken, velocity)
-if(collisions("Floor", "Helicopter")) {if(HeliBroken == false){velocity = -8} else{clearInterval(gameLoop)}}
+if(collisions("Floor", "Helicopter")) {if(HeliBroken == false){velocity = -8} else{clearInterval(gameLoop);moveTo("resetScreen", 660, 300)}}
 if(collisions("SkyBox", "Helicopter")||collisions("SkyBox2", "Helicopter")) {if(HeliBroken == false){velocity = 8}}
 
-for(i=0; i<obstacle.length; i++) {
+for(i=0; i<obstacleNumber; i++) {
  move(obstacle[i].id, -14/(1+HeliBroken), 0)
  obstacle[i].rot = obstacle[i].rot + 20
  document.getElementById(obstacle[i].id).style.transform="rotate("+obstacle[i].rot+"deg)"
@@ -46,12 +52,14 @@ for(i=0; i<obstacle.length; i++) {
  if(score == 10) {
   obstacle[1] = {id:"Mushroom002", onScreen:false, rot:0,}
   moveTo(obstacle[1].id, 2400, Math.random()*570+50)
+  obstacleNumber = 2
  }
  if(score == 30) {
   obstacle[2] = {id:"Mushroom003", onScreen:false, rot:0,}
   moveTo(obstacle[2].id, 2000, Math.random()*570+50)
   obstacle[3] = {id:"Mushroom004", onScreen:false, rot:0,}
   moveTo(obstacle[3].id, 2800, Math.random()*570+50)
+  obstacleNumber = 4
  }
 
  
@@ -68,9 +76,25 @@ for(i=0; i<obstacle.length; i++) {
 }
 
 document.getElementById("scoreScreen").innerHTML = score
-}, 10)
+},10)
+}
 
-
+function reset() {
+ HeliBroken = false
+ moveTo("Helicopter", 0, 200)
+ moveTo("Mushroom001", -300, 5000)
+ moveTo("Mushroom002", -300, 5000)
+ moveTo("Mushroom003", -300, 5000)
+ moveTo("Mushroom004", -300, 5000)
+ score = 0
+ velocity = 0
+ rotation = 0
+ document.getElementById("Helicopter").style.transform = "rotate(20deg)"
+ start()
+ moveTo("resetScreen", -3000, -3000)
+ document.body.style.backgroundColor = "00bfff"
+ obstacleNumber = 1
+}
  
 
 function crash() {
